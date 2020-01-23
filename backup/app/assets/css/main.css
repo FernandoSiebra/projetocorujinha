@@ -1,0 +1,20 @@
+/*********************************/
+/**** Handmade by fernandosiebra@gmail.com
+/**** For Projeto Corujinha (21/06/2015)
+/**** main.css base style of projetocorujinha.com.br
+/*********************************/
+/***** COLORS **********/
+/***** VERDE DESTAQUE: #0A7B55;
+/****** DEFAULT ********/
+.content-center{ width: 960px; padding: 0 20px; display: table; margin: 0 auto; }
+*{ font-family: 'Open Sans',sans-serif;  }
+.mobile-true{ display: none !important; }
+.mobile-false{ display: block !important; }
+
+
+h1{ margin: 0; padding: 0; }
+.capa { position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;z-index: 0;}
+.capa img{position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; min-width: 50%; min-height: 50%;}
+.home { position: relative; z-index: 1;}
+.home h1{ padding: 20px; }
+.fb-page{ margin-left: 11px; width: 80%; }

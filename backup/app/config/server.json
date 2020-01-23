@@ -1,0 +1,7 @@
+{
+	"phpdev" : "dev"
+	, "192.168.1.23" : "dev"
+	, "localhost" : "dev"
+	,"projetocorujinha.com.br" : "prd"
+	,"www.projetocorujinha.com.br" : "prd"
+}

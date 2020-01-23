@@ -1,0 +1,264 @@
+<script>
+	
+	function entityForm(data)
+	{		
+		$("#titulo").val(data.titulo);
+		$("#descricao").val(data.descricao);
+		$("#id").val(data.id);
+
+		$("input[name='destaque']").attr('checked',false);
+		$('.group-destaque input[value="' + data.destaque + '"]').prop("checked",true);
+
+		$(".media-left label").html( $(".media-left label").data('org') );
+		$('.btn-excluir-img').css("display",'none');
+
+		if( data.imagem1 != "" )
+		{
+			$("label[for='imagem-1']").html("<img src='../upload/noticia/" + data.imagem1 + "' alt='' width='47' style='max-height: 47px;' />");
+			//$("label[for='imagem-1']").parent().parent().find('.btn-excluir-img').data('id',el.id).show();
+		}	
+
+		if( data.imagem2 != "" )
+		{
+			$("label[for='imagem-2']").html("<img src='../upload/noticia/" + data.imagem2 + "' alt='' width='47' style='max-height: 47px;' />");
+			//$("label[for='imagem-1']").parent().parent().find('.btn-excluir-img').data('id',el.id).show();
+		}	
+
+		/*
+		$.each(categorias,function(i,categoria){
+			$('input[value="' + categoria + '"]').prop("checked",true);
+		});
+		*/
+
+		$.ajax({
+			url : 'noticia/imagens/' + data.id
+			, dataType : 'json'
+			, success : function(data)
+			{
+				$.each(data,function(i,registro){
+					$(".form-paragrafo[data='"+(registro.posicao-1)+"'] img").attr('src','../upload/noticia/'+registro.imagem).data('id',registro.id);
+					$("select[name='align_" + registro.posicao + "']").val(registro.align);
+				});
+			}
+		})
+
+		var paragrafoElement = $(".form-paragrafo").html();
+		$('.form-paragrafo').remove();
+
+		$('.texto-hide').html(data.texto);
+		var pCount = $('.texto-hide').find('p').length;
+
+		$.each($('.texto-hide p'), function(i,el){
+			$('.div-texto').append('<div class="form-group form-paragrafo" data="' + i + '">'+paragrafoElement+'</div>');
+			$('.div-texto textarea').last().html($(el).html());
+		});
+		resetParagrafos();
+	}
+
+	function viewLoad()
+	{
+		$(".novo-paragrafo a").on('click',novoParagrafo);
+		$(".btn-excluir-paragrafo").on('click',excluirParagrafo);
+
+	}
+
+	function novoParagrafo(e)
+	{
+		var p = $(".form-paragrafo").first().clone();
+		$(".div-texto").append(p);
+		resetParagrafos();
+		$(".form-paragrafo").last().find('textarea').val("");
+		$(".form-paragrafo").last().find('img').attr('src','');
+		e.preventDefault();
+	}
+
+	function excluirParagrafo(e)
+	{
+		var index = $(this).parent().parent().data('index');
+		if( index != 1 )
+		{
+			$(this).parent().parent().remove();
+			resetParagrafos();
+		}
+		e.preventDefault();
+	}
+
+	function resetParagrafos()
+	{
+		$(".form-paragrafo label span").each(function(i,el){
+			$(el).html( i+1 );
+		});
+		$(".form-paragrafo select").each(function(i,el){
+			$(this).attr('name','align_'+(i+1));
+		});
+		$(".form-paragrafo input[type='file']").each(function(i,el){
+			$(this).attr('name','imagem_noticia_'+(i+1));
+		})
+		$(".form-paragrafo").each(function(i,el){
+			$(el).data('index',i+1);
+		});
+		$(".btn-excluir-paragrafo").on('click',excluirParagrafo);
+		$(".fa-remove").on('click',function(){
+			var url = 'noticia/imagens/delete/' + $(this).prev().data('id');
+			$.ajax({
+				url : url
+				, success : function(data)
+				{
+				}
+			})
+			$(this).prev().attr("src",'');
+			return false;
+		});
+	}
+
+	function btnNovoAfterClick()
+	{
+		$(".form-paragrafo").each(function(i,el){
+			if( i != 0 )
+			{
+				$(el).remove();
+			}
+		});
+		$('.media-left label').each(function(i,el){
+			$(el).html( $(el).data('org') );
+		});
+	}
+
+	function formValidate()
+	{
+		var texto = '';
+		$(".form-paragrafo textarea").each(function(i,el){
+			texto += '<p>' + $(el).val() + '</p>';
+		});
+		$('#texto').val( texto );
+		return true;
+	}
+
+</script>
+
+<style>
+.paragrafo-btn{ display: table; padding: 5px 0; width: 100%; }
+.paragrafo-btn input
+,.paragrafo-btn select{  display: inline-block; }
+.paragrafo-btn img[src='']{ display: none; }
+.paragrafo-btn img[src=''] + i{ display: none; }
+.novo-paragrafo{ text-align: center; }
+.btn-excluir-paragrafo{ float: right; }
+.fa-remove{ color: red; margin: 0 5px; cursor: pointer; }
+</style>
+
+<header class="entity-actions">
+	<button type="button" class="btn btn-success btn-novo"><i class="fa fa-plus"></i> Novo</button>
+	<button type="button" class="btn btn-primary btn-editar" disabled="disabled"><i class="fa fa-edit"></i> Editar</button>
+	<button type="button" class="btn btn-danger btn-delete" disabled="disabled"><i class="fa fa-trash"></i> Excluir</button>
+	@message
+</header>
+
+<section>
+
+	<section class="entity-form">
+		<div class="entity-form-protect"></div>
+		<div class="entity-form-load"><i class="fa fa-spinner fa-pulse"></i></div>
+		<form method="post" enctype="multipart/form-data">
+
+			<div style="display:table; width: 100%;">
+				<div class="col-md-6">
+					<div class="form-group">
+			      		<label for="titulo" class="control-label">Título</label>
+			      		<input type="text" name="titulo" id="titulo" class="form-control" placeholder="Titulo" maxlength="200" />
+			    	</div>
+			    	<div class="form-group group-destaque">
+				    	<label for="nome" class="control-label">Destaque home:</label>
+						&nbsp;<label><input type="radio" name="destaque" value="S"/> Sim</label>
+						&nbsp;<label><input type="radio" name="destaque" checked value="N"/> Não</label>
+				    </div>
+
+				     <div class="form-group">
+					 	<div class="media">
+						  <div class="media-left">
+						    <label for="imagem-1" data-org="507x370">507x370</label>
+						  </div>
+						  <div class="media-body">
+						    <p class="media-heading">Imagem destaque home</p>
+						    <button type="button" style="display: none;" data-posicao="1" class="btn btn-danger btn-xs btn-excluir-img">Excluir</button>
+							<input type='file' name='imagem-1' id='imagem-1' />
+						  </div>
+						</div>
+					</div>
+
+
+				     <div class="form-group">
+					 	<div class="media">
+						  <div class="media-left">
+						    <label for="imagem-2" data-org="1480x578">1480x578</label>
+						  </div>
+						  <div class="media-body">
+						    <p class="media-heading">Imagem destaque lista</p>
+						    <button type="button" style="display: none;" data-posicao="2" class="btn btn-danger btn-xs btn-excluir-img">Excluir</button>
+							<input type='file' name='imagem-2' id='imagem-2' />
+						  </div>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-md-6">
+				    <div class="form-group">
+			    		<label for="descricao" class="control-label">Resumo</label>
+			     		<textarea name="descricao" id="descricao" max-length='300' class="form-control" rows="10" placeholder="Resumo"></textarea>
+			   		</div>
+				</div>
+			</div>
+	  		<div class="form-group div-texto">
+		    	<label for="texto" class="control-label">Texto</label>
+		    		<div class="texto-hide" style="display:none;"></div>
+		    	 <div class="form-group form-paragrafo" data-index='1'>
+		    		
+		    		<div class='paragrafo-btn'>
+		    		<label for="descricao" class="control-label">Paragrafo <span>1</span></label>
+		    		<i class="fa fa-image" style='margin: 0 10px 0 20px;'></i> 
+		    		<img src='' width='' height='30' />
+		    		<i class='fa fa-remove'></i>
+		    		<input type="file" name="imagem_noticia_1" />
+		    		<i class="fa fa-indent" style='margin: 0 10px 0 20px;'></i>
+		    		<select name="align_1">
+		    			<option value="left">Esquerda</option>
+		    			<option value="right">Direita</option>
+		    		</select>
+		    		<button type="button" class="btn btn-danger btn-excluir-paragrafo btn-xs"><i class="fa fa-trash"></i> Excluir</button>
+		    		</div>
+		     		<textarea max-length='10000' class="form-control" rows="20" style="height: 200px" spellcheck="false" wrap="off" placeholder="Texto" ></textarea>	
+		   		</div>		     	
+		    </div>
+		    <div class="novo-paragrafo"><a href='#'><i class="fa fa-plus"></i> Parágrafo</a></div>
+		    <input type="hidden" name="texto" id="texto" value="" />
+			 
+
+			 <div style="text-align: right;">
+			 	<input type='file' style="display:none" id="imagem-upload" />
+			 	<input type="hidden" name="id" id="id" value="">
+		    	<button type="submit" class="btn btn-primary">Confirmar</button>
+			</div>
+		</form>
+	</section>
+
+	<table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Título</th>
+          <th>Destaque</th>
+        </tr>
+      </thead>
+      <tbody>
+		@foreach(noticias)
+		<tr data-id="@id">
+			<td width='120px'>@criacao</td>
+			<td>@titulo</td>
+			<td width='120px'>@destaque</td>
+		</tr>
+		@end
+      </tbody>
+    </table>
+
+</section>
+

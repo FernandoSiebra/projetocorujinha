@@ -1,0 +1,21 @@
+/*********************************/
+/**** Handmade by fernandosiebra@gmail.com
+/**** For Projeto Corujinha (21/06/2015)
+/**** main.css Mobile style of projetocorujinha.com.br
+/*********************************/
+/*********************************/
+/***** COLORS **********/
+/***** ACTIVE BLUE: #185574;
+/***** PURPLE: #162745;
+/****** DEFAULT ********/
+*{ font-family: 'Open Sans',sans-serif;  }
+.mobile-true{ display: none !important; }
+.mobile-false{ display: block !important; }
+
+.capa { position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;z-index: 0;}
+.capa img{position: absolute; top: 0; left: 0; right: 0; bottom: 0; margin: auto; min-width: 50%; min-height: 50%;}
+.home { position: relative; z-index: 1;}
+.home h1{  margin: 0; text-align: center; padding: 10px 0; margin-bottom: 20px; }
+.home h1 img{ height: 150px; width: auto; margin: 0 auto;  }
+
+.fb-page{  }

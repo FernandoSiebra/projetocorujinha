@@ -1,0 +1,365 @@
+<script>
+
+	function viewLoad()
+	{
+		$(".btn-up,.btn-down").on("click",position);
+	}
+
+	function entityForm(data)
+	{
+		$("#nome").val(data.nome);
+		$("#ano").val(data.ano);
+		$("#metragem").val(data.metragem);
+		$("#fotografo").val(data.fotografo);
+		$("#construtora").val(data.construtora);
+		$("#cliente").val(data.cliente);
+		$("#descricao").val(data.descricao);
+		$("#id").val(data.id);
+
+		var categorias = data.categoria.split(",");
+		$.each(categorias,function(i,categoria){
+			$('input[value="' + categoria + '"]').prop("checked",true);
+		});
+
+		$(".media-left label").each(function(i,el){
+			$(el).html( $(el).data('org') );
+		});
+
+		$('.btn-excluir-img').hide();
+
+		$.each(data.imagens,function(i,el){
+			$("label[for='imagem-" + el.posicao + "']").html("<img src='../upload/projeto/" + el.arquivo + "' alt='' width='47' style='max-height: 47px;' />");
+			$("label[for='imagem-" + el.posicao + "']").parent().parent().find('.btn-excluir-img').data('id',el.id).show();
+		});
+
+		$(".btn-excluir-img").on("click",function(){
+			var entity = location.href.split('/'); 
+			entity = entity[entity.length-1];
+			location.href = entity + "/imagem/delete/" + data.id + "/" + $(this).data('posicao');
+		});
+	}
+
+
+
+	function position()
+	{
+		var prev = $('.selected').prev().is('tr') ? $('.selected').prev() : false
+		    , next = $('.selected').next().is('tr') ? $('.selected').next() : false
+		    , selected = $('.selected');
+
+		if( $(this).hasClass("btn-up") && typeof prev == 'object' )
+		{
+			$(prev).before(selected);
+			var direction = 'up';
+		}
+		else if( $(this).hasClass("btn-down") && typeof next == 'object' )
+		{
+			$(next).after(selected);
+			var direction = 'down';
+		}
+		else
+		{
+			return false;
+		}
+
+		$('.body-protect,.body-load').show();
+		$.ajax({
+			url : 'move/projeto/' + $('.selected').data('id') + '/' + direction
+			, success : function(data)
+			{
+				$('.body-protect,.body-load').hide();
+			}
+		})
+
+	}
+
+	function btnNovoAfterClick()
+	{
+		$(".media-left label").each(function(i,el){
+			$(el).html( $(el).data('org') );
+		});
+		$('.btn-excluir-img').hide();
+	}
+
+	function formValidate()
+	{
+		$(".entity-form .has-error").removeClass('has-error');
+		if( $("#nome").val() == "" )
+		{
+			$("#nome").parent().addClass('has-error');
+		}
+		if( $(".entity-form .has-error").length != 0 )
+		{
+			return false;
+		}
+	}
+</script>
+
+
+<header class="entity-actions">
+	<button type="button" class="btn btn-success btn-novo"><i class="fa fa-plus"></i> Novo</button>
+	<button type="button" class="btn btn-primary btn-editar" disabled="disabled"><i class="fa fa-edit"></i> Editar</button>
+	<button type="button" class="btn btn-danger btn-delete" disabled="disabled"><i class="fa fa-trash"></i> Excluir</button>
+	&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-list-ol"></i> &nbsp;
+	<button type="button" class="btn btn-primary btn-for-selected btn-up" disabled="disabled"><i class="fa fa-chevron-up"></i> Cima</button>
+	<button type="button" class="btn btn-primary btn-for-selected btn-down" disabled="disabled"><i class="fa fa-chevron-down"></i> Baixo</button>
+	@message
+</header>
+<section>
+
+	<section class="entity-form">
+		<div class="entity-form-protect"></div>
+		<div class="entity-form-load"><i class="fa fa-spinner fa-pulse"></i></div>
+		<form method="post" enctype="multipart/form-data">
+			<div class="col-md-6">
+			    <div class="form-group">
+			      <label for="nome" class="control-label">Nome</label>
+			      <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome">
+			    </div>
+
+			    <div class="checkbox">
+			    	<label><input type='checkbox' name='categoria[]' value="social" />Social</label> &nbsp;
+			    	<label><input type='checkbox' name='categoria[]' value="intimo" />Íntimo</label> &nbsp;
+			    	<label><input type='checkbox' name='categoria[]' value="servicos" />Serviços</label> &nbsp;
+					<label><input type='checkbox' name='categoria[]' value="lazer" />Lazer</label>
+			    </div>
+			    <div class="checkbox">
+					<label><input type='checkbox' name='categoria[]' value="decorado" />Decorado</label> &nbsp; 
+					<label><input type='checkbox' name='categoria[]' value="area-comum" />Área comum</label> &nbsp; 
+					<label><input type='checkbox' name='categoria[]' value="stand" />Stand</label> &nbsp;
+					<label><input type='checkbox' name='categoria[]' value="projeto" />Projeto</label>
+			    </div>
+
+			    <div class="form-group">
+			      <label for="ano" class="control-label">Ano</label>
+			     <input type="text" name="ano" id="ano"  class="form-control"  placeholder="Ano" maxlength="4" />
+			    </div>
+
+	  		    <div class="form-group">
+			    	<label for="metragem" class="control-label">Metragem</label>
+			     	<input type="text" name="metragem" id="metragem" class="form-control"  placeholder="Metragem" maxlength="20" />
+			    </div>
+
+			    <div class="form-group">
+			    	<label for="fotografo" class="control-label">Fotografo</label>
+			     	<input type="text" name="fotografo" id="fotografo" class="form-control"  placeholder="Fotografo" maxlength="50" />
+			    </div>
+
+			</div>
+			<div class="col-md-6">
+	  		    <div class="form-group">
+			    	<label for="construtora" class="control-label">Contrutora</label>
+			     	<input type="text" name="construtora" id="construtora" class="form-control"  placeholder="Construtora" maxlength="20" />
+			    </div>
+
+
+	  		    <div class="form-group">
+			    	<label for="cliente" class="control-label">Cliente</label>
+			     	<input type="text" name="cliente" id="cliente" class="form-control"  placeholder="Cliente" maxlength="20" />
+			    </div>
+
+	   		    <div class="form-group">
+			    	<label for="descricao" class="control-label">Descrição</label>
+			     	<textarea name="descricao" id="descricao" class="form-control"  placeholder="Descrição" rows="8" maxlength="200"></textarea>
+			    </div>
+			 </div>
+
+			 <p style='text-align:center;'>
+				<img src="../app/assets/img/portfolio-mapa.jpg" alt="" />
+			</p>
+			 <hr/>
+
+			 <div class="col-md-6">
+				 <div class="form-group">
+				 	<div class="media">
+					  <div class="media-left">
+					    <label for="imagem-1" data-org="180x180">180x180</label>
+					  </div>
+					  <div class="media-body">
+					    <p class="media-heading">Imagem pequena - Portfólio (180x180)</p>
+					    <button type="button" style="display: none;" data-posicao="1" class="btn btn-danger btn-xs btn-excluir-img">Excluir</button>
+						<input type='file' name='imagem-1' id='imagem-1' />
+					  </div>
+					</div>
+				</div>
+
+				<div class="form-group">
+				 	<div class="media">
+					  <div class="media-left">
+					    <label for="imagem-2" data-org="278x278">278x278</label>
+					  </div>
+					  <div class="media-body">
+					    <p class="media-heading">Imagem grande - Uso (278x278)</p>
+					    <button type="button" style="display: none;" data-posicao="2" class="btn btn-danger btn-xs btn-excluir-img">Excluir</button>
+						<input type='file' name='imagem-2' id='imagem-2' />
+					  </div>
+					</div>
+				</div>
+
+				<div class="form-group">
+				 	<div class="media">
+					  <div class="media-left">
+					    <label for="imagem-11" data-org="507x370">507x370</label>
+					  </div>
+					  <div class="media-body">
+					    <p class="media-heading">Imagem home (507x370)</p>
+					    <button type="button" style="display: none;" data-posicao="11" class="btn btn-danger btn-xs btn-excluir-img">Excluir</button>
+						<input type='file' name='imagem-11' id='imagem-11' />
+					  </div>
+					</div>
+				</div>
+
+				<div class="form-group">
+				 	<div class="media">
+					  <div class="media-left">
+					    <label for="imagem-12" data-org="255x370">255x370</label>
+					  </div>
+					  <div class="media-body">
+					    <p class="media-heading">Imagem home vertical (255x370)</p>
+					    <button type="button" style="display: none;" data-posicao="12" class="btn btn-danger btn-xs btn-excluir-img">Excluir</button>
+						<input type='file' name='imagem-12' id='imagem-12' />
+					  </div>
+					</div>
+				</div>
+
+				<div class="form-group">
+				 	<div class="media">
+					  <div class="media-left">
+					    <label for="imagem-3" data-org="507x370">507x370</label>
+					  </div>
+					  <div class="media-body">
+					    <p class="media-heading">Posição 1 (507x370)</p>
+					    <button type="button" style="display: none;" data-posicao="3" class="btn btn-danger btn-xs btn-excluir-img">Excluir</button>
+						<input type='file' name='imagem-3' id='imagem-3' />
+					  </div>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+				 	<div class="media">
+					  <div class="media-left">
+					    <label for="imagem-4" data-org="255x184">255x184</label>
+					  </div>
+					  <div class="media-body">
+					    <p class="media-heading">Posição 2 (255x184)</p>
+					    <button type="button" style="display: none;" data-posicao="4" class="btn btn-danger btn-xs btn-excluir-img">Excluir</button>
+						<input type='file' name='imagem-4' id='imagem-4' />
+					  </div>
+					</div>
+				</div>
+
+				<div class="form-group">
+				 	<div class="media">
+					  <div class="media-left">
+					    <label for="imagem-5" data-org="255x184">255x184</label>
+					  </div>
+					  <div class="media-body">
+					    <p class="media-heading">Posição 3 (255x184)</p>
+					    <button type="button" style="display: none;" data-posicao="5" class="btn btn-danger btn-xs btn-excluir-img">Excluir</button>
+						<input type='file' name='imagem-5' id='imagem-5' />
+					  </div>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-md-6" style="height: 500px">
+
+				<div class="form-group">
+				 	<div class="media">
+					  <div class="media-left">
+					    <label for="imagem-6" data-org="255x184">255x184</label>
+					  </div>
+					  <div class="media-body">
+					    <p class="media-heading">Posição 4 (255x184)</p>
+					    <button type="button" style="display: none;" data-posicao="6" class="btn btn-danger btn-xs btn-excluir-img">Excluir</button>
+						<input type='file' name='imagem-6' id='imagem-6' />
+					  </div>
+					</div>
+				</div>
+
+			
+
+				<div class="form-group">
+				 	<div class="media">
+					  <div class="media-left">
+					    <label for="imagem-7" data-org="507x370">507x370</label>
+					  </div>
+					  <div class="media-body">
+					    <p class="media-heading">Posição 5 (507x370)</p>
+					    <button type="button" style="display: none;" data-posicao="7" class="btn btn-danger btn-xs btn-excluir-img">Excluir</button>
+						<input type='file' name='imagem-7' id='imagem-7' />
+					  </div>
+					</div>
+				</div>
+
+				<div class="form-group">
+				 	<div class="media">
+					  <div class="media-left">
+					    <label for="imagem-8" data-org="255x184">255x184</label>
+					  </div>
+					  <div class="media-body">
+					    <p class="media-heading">Posição 6 (255x184)</p>
+					    <button type="button" style="display: none;" data-posicao="8" class="btn btn-danger btn-xs btn-excluir-img">Excluir</button>
+						<input type='file' name='imagem-8' id='imagem-8' />
+					  </div>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+				 	<div class="media">
+					  <div class="media-left">
+					    <label for="imagem-9" data-org="255x184">255x184</label>
+					  </div>
+					  <div class="media-body">
+					    <p class="media-heading">Posição 7 (255x184)</p>
+					    <button type="button" style="display: none;" data-posicao="9" class="btn btn-danger btn-xs btn-excluir-img">Excluir</button>
+						<input type='file' name='imagem-9' id='imagem-9' />
+					  </div>
+					</div>
+				</div>
+
+
+				<div class="form-group">
+				 	<div class="media">
+					  <div class="media-left">
+					    <label for="imagem-10" data-org="255x370">255x370</label>
+					  </div>
+					  <div class="media-body">
+					    <p class="media-heading">Posição 8 (255x370)</p>
+					    <button type="button" style="display: none;" data-posicao="10" class="btn btn-danger btn-xs btn-excluir-img">Excluir</button>
+						<input type='file' name='imagem-10' id='imagem-10' />
+					  </div>
+					</div>
+				</div>
+
+			</div>
+
+
+			 <div style="text-align: right;">
+			 	<input type="hidden" name="id" id="id" value="">
+		    	<button type="submit" class="btn btn-primary">Confirmar</button>
+			</div>
+		</form>
+	</section>
+
+	<table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Categoria</th>
+          <th>Ano</th>
+        </tr>
+      </thead>
+      <tbody>
+		@foreach(projetos)
+		<tr data-id="@id">
+			<td>@nome</td>
+			<td>@categoria</td>
+			<td>@ano</td>
+		</tr>
+		@end
+      </tbody>
+    </table>
+</section>

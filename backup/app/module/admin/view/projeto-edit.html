@@ -1,0 +1,164 @@
+<h2>
+	<a href="@uri(projeto)">Projetos</a>
+	Editar
+	<button class="btn-send-form">Confirmar</button>
+</h2>
+
+<style>
+	.form-btn-excluir{ color: #FF5151; font-size: 14px; }
+</style>
+
+<script type="text/javascript">
+	$(function(){
+		$(".admin-body-content form").on("submit",function(){
+			$(".admin-body-content form .input-error").removeClass('input-error');
+			if( $("#nome").val() === "" )
+			{
+				$("#nome").addClass("input-error");
+			}
+
+			if( $("input[name='categoria[]']:checked").length == 0 )
+			{
+				alert("Selecione alguma categoria");
+				return false;
+			}
+
+			if( $(".admin-body-content form .input-error").length != 0 )
+			{
+				return false;	
+			}
+		});
+
+		$(".admin-body-content form input[type='file']").on("change",function(){
+			var val = $(this).val();
+			var re = /(?:\.([^.]+))?$/;
+			var ext = re.exec(val)[1];
+			if( ext != 'jpg' )
+			{
+				alert("Imagem deve ser jpg");
+				$(this).val("");
+			}
+		});
+
+		var categorias = "@categorias";
+		categorias = categorias.split(",");
+		for( var i = 0; i < categorias.length; i++ )
+		{
+			$("input[value='" + categorias[i] + "']").click();
+		}
+
+		$(".form-btn-excluir").on("click",function(){
+			return confirm("Deseja realmente excluir?");
+		})
+
+	})
+</script>
+
+
+<form method='post' enctype="multipart/form-data">
+
+	<p>
+		<input type="text" name="nome" id="nome" placeholder="Nome" value="@nome" maxlength="100" />
+	</p>
+	<p>
+		<input type="text" name="ano" id="ano" placeholder="Ano" value="@ano" maxlength="4" />
+	</p>
+	<p>
+		<input type="text" name="metragem" id="metragem" placeholder="Metragem" value="@metragem" maxlength="20" />
+	</p>
+	<p>
+		<input type="text" name="construtora" id="construtora" placeholder="Construtora" value="@construtora" maxlength="30" />
+	</p>
+	<p>
+		<input type="text" name="cliente" id="cliente" value="@cliente" placeholder="Cliente" maxlength="30" />
+	</p>
+	<p>
+		<textarea name="descricao" id="descricao" placeholder="Descrição" rows="6" maxlength="200">@descricao</textarea>
+	</p>
+	<p>
+		<label><input type='checkbox' name='categoria[]' value="social" />Social</label>
+		<label><input type='checkbox' name='categoria[]' value="intimo" />Íntimo</label>
+		<label><input type='checkbox' name='categoria[]' value="servicos" />Serviços</label>
+		<label><input type='checkbox' name='categoria[]' value="lazer" />Lazer</label>
+		<label><input type='checkbox' name='categoria[]' value="decorado" />Decorado</label>
+		<label><input type='checkbox' name='categoria[]' value="area-comum" />Área comum</label>
+		<label><input type='checkbox' name='categoria[]' value="stand" />Stand</label>
+		<label><input type='checkbox' name='categoria[]' value="projeto" />Projeto</label>
+	</p>
+
+	<h2>Fotos</h2>
+
+	<p>
+		<span class="width-1 height-1">
+			180x180
+			@img1
+		</span>
+		<input type='file' name='imagem-1' id='imagem-1' />
+		<br /><br />
+		<a href="@uri(projeto/imagem/delete/@get(id)/1)" class='form-btn-excluir'>Excluir</a>
+	</p>
+
+	<p>
+		<span class="width-2 height-2">507x370@img2</span>
+		<input type='file' name='imagem-2' id='imagem-2' />
+		<br /><br />
+		<a href="@uri(projeto/imagem/delete/@get(id)/2)" class='form-btn-excluir'>Excluir</a>
+	</p>
+
+	<p>
+		<span class="width-2 height-2">507x370@img3</span>
+		<input type='file' name='imagem-3' id='imagem-3' />
+		<br /><br />
+		<a href="@uri(projeto/imagem/delete/@get(id)/3)" class='form-btn-excluir'>Excluir</a>
+	</p>
+
+	<p>
+		<span class="width-1 height-1">255x184@img4</span>
+		<input type='file' name='imagem-4' id='imagem-4' />
+		<br /><br />
+		<a href="@uri(projeto/imagem/delete/@get(id)/4)" class='form-btn-excluir'>Excluir</a>
+	</p>
+	<p>
+		<span class="width-1 height-1">255x184@img5</span>
+		<input type='file' name='imagem-5' id='imagem-5' />
+		<br /><br />
+		<a href="@uri(projeto/imagem/delete/@get(id)/5)" class='form-btn-excluir'>Excluir</a>
+	</p>
+	<p>
+		<span class="width-1 height-1">255x184@img6</span>
+		<input type='file' name='imagem-6' id='imagem-6' />
+		<br /><br />
+		<a href="@uri(projeto/imagem/delete/@get(id)/6)" class='form-btn-excluir'>Excluir</a>
+	</p>
+	<p>
+		<span class="width-1 height-1">255x184@img7</span>
+		<input type='file' name='imagem-7' id='imagem-7' />
+		<br /><br />
+		<a href="@uri(projeto/imagem/delete/@get(id)/7)" class='form-btn-excluir'>Excluir</a>
+	</p>
+
+	<p>
+		<span class="width-2 height-2">507x370@img8</span>
+		<input type='file' name='imagem-8' id='imagem-8' />
+		<br /><br />
+		<a href="@uri(projeto/imagem/delete/@get(id)/8)" class='form-btn-excluir'>Excluir</a>
+	</p>
+
+	<p>
+		<span class="width-1 height-1">255x184@img9</span>
+		<input type='file' name='imagem-9' id='imagem-9' />
+		<br /><br />
+		<a href="@uri(projeto/imagem/delete/@get(id)/9)" class='form-btn-excluir'>Excluir</a>
+	</p>
+
+	<p>
+		<span class="width-1 height-2">255x370@img_dez</span>
+		<input type='file' name='imagem-10' id='imagem-10' />
+		<br /><br />
+		<a href="@uri(projeto/imagem/delete/@get(id)/10)" class='form-btn-excluir'>Excluir</a>
+	</p>
+
+
+	<input type="submit" style='display:none;' />
+
+</form>

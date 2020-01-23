@@ -1,0 +1,85 @@
+Item;Data;Fornecedor;Descricao;Valor;Centro Custo;Total Acumulado
+1;22/08/17;Fornecedor;Transporte Taça Yoshito;300.00;CAMPEONATOS;0.00
+2;08/08/17;Fornecedor;Faculdade Igor;840,00;PESSOAS;300,00
+3;08/08/17;Fornecedor;Salário Igor;800,00;PESSOAS;1.140,00
+4;30/08/17;Fornecedor;Arrumação Casa de Tacos;200,00;MANUT.;1.940,00
+5;10/09/17;Fornecedor;1a Parcela Filiação;1.000,00;ADM;2.140,00
+6;30/09/17;Fornecedor;Transporte CKT;400,00;CAMPEONATOS;3.140,00
+7;30/09/17;Fornecedor;Frios, Pães e água CKT;160,00;ADM;3.540,00
+8;21/09/17;Fornecedor;Pagamento Prof. Regina;1.066,00;PESSOAS;3.700,00
+9;22/09/17;Fornecedor;Frutas Funcionários SPGC;70,00;CAMPEONATOS;4.766,00
+10;30/09/17;Fornecedor;Pagamento Prof. Regina;858,00;PESSOAS;4.836,00
+11;18/09/17;Fornecedor;Uniformes CKT;660,00;ADM;5.694,00
+12;18/09/17;Fornecedor;Inscrição Trabalho Igor;95,00;PESSOAS;6.354,00
+13;18/09/17;Fornecedor;Uniformes camisetas;150,00;ADM;6.449,00
+14;08/09/17;Fornecedor;Faculdade Igor;840,00;PESSOAS;6.599,00
+15;08/09/17;Fornecedor;Salário Igor;800,00;PESSOAS;7.439,00
+16;10/10/17;Fornecedor;2a Parcela Filiação;1.000,00;ADM;8.239,00
+17;22/10/17;Fornecedor;Lanche Campeonato;194,00;CAMPEONATOS;9.239,00
+18;23/10/17;Fornecedor;Pagamento Prof. Regina;1.600,00;PESSOAS;9.433,00
+19;23/10/17;Fornecedor;Motor Cortador de Grama;640,00;MANUT.;11.033,00
+20;24/10/17;Fornecedor;Embreagem Cortador;240,00;MANUT.;11.673,00
+21;25/10/17;Fornecedor;MDO Soldador;400,00;MANUT.;11.913,00
+22;26/10/17;Fornecedor;Faculdade Igor;840,00;PESSOAS;12.313,00
+23;27/10/17;Fornecedor;Salário Igor;800,00;PESSOAS;13.153,00
+24;28/10/17;Fornecedor;Pagamento Extras Regina;45,00;PESSOAS;13.953,00
+25;07/11/17;Fornecedor;Reforma Roçadeira;300,00;MANUT.;13.998,00
+26;08/11/17;Fornecedor;Faculdade Igor;840,00;PESSOAS;14.298,00
+27;08/11/17;Fornecedor;Salário Igor;800,00;PESSOAS;15.138,00
+28;13/11/17;Fornecedor;Pagamento Taxa FPG 3/6;1.000,00;ADM;15.938,00
+29;20/11/17;Fornecedor;Inscrição BKGT (SPGC e CCSP) Bia, Diego e Kauan;330,00;CAMPEONATOS;16.938,00
+30;20/11/17;Fornecedor;Retro Escavadeira;60.000,00;MANUT.;17.268,00
+31;22/11/17;Fornecedor;Inscrição Curso BKGT;100,00;CAMPEONATOS;77.268,00
+32;24/11/17;Fornecedor;Placas dos Buracos 1 a 9;225,00;MANUT.;77.368,00
+33;21/11/17;Fornecedor;Salário Prof. Regina;1.600,00;PESSOAS;77.593,00
+34;28/11/17;Fornecedor;Gastos Regina;540,39;ADM;79.193,00
+35;08/12/17;Fornecedor;Faculdade Igor;840,00;PESSOAS;79.733,39
+36;08/12/17;Fornecedor;Salário Igor;800,00;PESSOAS;80.573,39
+37;13/11/17;Fornecedor;Pagamento Taxa FPG 4/6;1.000,00;ADM;81.373,39
+38;10/12/17;Fornecedor;João Compra Decathlon;469,77;ADM;82.373,39
+39;11/12/17;Fornecedor;Pagamento Cido auxilio cortando a grama;1.500,00;MANUT.;82.843,16
+40;21/12/17;Fornecedor;Gastos Transporte e Alimentação BKGT;158,23;CAMPEONATOS;84.343,16
+41;21/12/17;Fornecedor;Salário Prof. Regina;1.400,00;PESSOAS;84.501,39
+42;21/12/17;Fornecedor;Salário Prof. Regina;200,00;PESSOAS;85.901,39
+43;23/12/17;Fornecedor;Gastos Transporte Danilo;269,00;PESSOAS;86.101,39
+44;23/12/17;Fornecedor;Gastos Frutas Igor;110,00;PESSOAS;86.370,39
+45;23/12/17;Fornecedor;Panetone de Natal;374,76;ADM;86.480,39
+46;08/01/18;Fornecedor;Faculdade Igor;840,00;PESSOAS;86.855,15
+47;08/01/18;Fornecedor;Salário Igor;800,00;PESSOAS;87.695,15
+48;10/01/18;Fornecedor;Stil 120 Roçadeira Costal 1/6;230,00;MANUT.;88.495,15
+49;11/01/18;Fornecedor;Salário Prof. Regina;770,00;PESSOAS;88.725,15
+50;13/01/18;Fornecedor;Pagamento Taxa FPG 4/6;1.000,00;ADM;89.495,15
+51;13/01/18;Fornecedor;Salário Prof. Regina;830,00;PESSOAS;90.495,15
+52;13/01/18;Fornecedor;Oléo Diesel Lago Fazenda;1.320,00;MANUT.;91.325,15
+53;25/01/18;Fornecedor;Trator Huskvarna 26HP (16K);3.000,00;MANUT.;92.645,15
+54;25/01/18;Fornecedor;Cido;3.400,00;MANUT.;95.645,15
+55;08/02/18;Fornecedor;Faculdade Igor;840,00;PESSOAS;99.045,15
+56;08/02/18;Fornecedor;Salário Igor;800,00;PESSOAS;99.885,15
+57;10/02/18;Fornecedor;Stil 120 Roçadeira Costal 2/6;230,00;MANUT.;100.685,15
+58;11/02/18;Fornecedor;Salário Prof. Regina;770,00;PESSOAS;100.915,15
+59;13/02/18;Fornecedor;Salário Prof. Regina;830,00;PESSOAS;101.685,15
+60;25/02/18;Fornecedor;Trator Huskvarna 26HP (16K);1.300,00;MANUT.;102.515,15
+61;25/02/18;Fornecedor;Cido;600,00;MANUT.;103.815,15
+62;25/02/18;Fornecedor;Pneus Para Trator;1.298,00;MANUT.;104.415,15
+63;08/03/18;Fornecedor;Faculdade Igor;840,00;PESSOAS;105.713,15
+64;08/03/18;Fornecedor;Salário Igor;800,00;PESSOAS;106.553,15
+65;10/03/18;Fornecedor;Stil 120 Roçadeira Costal 3/6;230,00;MANUT.;107.353,15
+66;11/03/18;Fornecedor;Salário Prof. Regina;1.800,00;PESSOAS;107.583,15
+67;25/03/18;Fornecedor;Trator Huskvarna 26HP (16K);1.300,00;MANUT.;109.383,15
+68;25/03/18;Fornecedor;10 Bonús, Impressões;171,00;ADM;110.683,15
+69;25/03/18;Fornecedor;Cido;1.300,00;MANUT.;110.854,15
+70;25/03/18;Fornecedor;Pneus Trator Cortar Grama;436,20;MANUT.;112.154,15
+71;08/04/18;Fornecedor;Faculdade Igor;840,00;PESSOAS;112.590,35
+72;08/04/18;Fornecedor;Salário Igor;800,00;PESSOAS;113.430,35
+73;10/04/18;Fornecedor;Stil 120 Roçadeira Costal 3/6;230,00;MANUT.;114.230,35
+74;11/04/18;Fornecedor;Salário Prof. Regina;1.800,00;PESSOAS;114.460,35
+75;25/04/18;Fornecedor;Trator Huskvarna 26HP (16K);1.300,00;MANUT.;116.260,35
+76;25/04/18;Fornecedor;Italo Sistema de Controle;600,00;ADM;117.560,35
+77;25/04/18;Fornecedor;Custos com CNPJ;500,00;ADM;118.160,35
+78;25/04/18;Fornecedor;Pneus Moto Serra;1.230,90;MANUT.;118.660,35
+79;25/04/18;Fornecedor;Camisetas e Bones Ab. Campinas;320,00;ADM;119.891,25
+80;25/04/18;Fornecedor;Alimentacão Ab. Campinas;77,38;CAMPEONATOS;120.211,25
+81;25/04/18;Fornecedor;Facas para 2 Tratores;530,00;MANUT.;120.288,63
+82;25/04/18;Fornecedor;Filtro para bebedouro;45,00;MANUT.;120.818,63
+83;25/04/18;Fornecedor;Transporte Ab. Campinas;250,00;CAMPEONATOS;120.863,63
+84;25/04/18;Fornecedor;Luizinho Clínica SPGC;350,00;ADM;121.113,63

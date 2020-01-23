@@ -1,0 +1,138 @@
+<h2>
+	<a href="@uri(noticia)">Not?cias</a>
+	Novo
+	<button class="btn-send-form">Confirmar</button>
+</h2>
+
+
+<script type="text/javascript">
+	$(function(){
+		$(".admin-body-content form").on("submit",function(){
+			$(".admin-body-content form .input-error").removeClass('input-error');
+			if( $("#titulo").val() === "" )
+			{
+				$("#titulo").addClass("input-error");
+			}
+			if( $(".admin-body-content form .input-error").length != 0 )
+			{
+				return false;	
+			}
+		});
+
+		$(".admin-body-content form input[type='file']").on("change",function(){
+			var val = $(this).val();
+			var re = /(?:\.([^.]+))?$/;
+			var ext = re.exec(val)[1];
+			if( ext != 'jpg' )
+			{
+				alert("Imagem deve ser jpg");
+				$(this).val("");
+			}
+		});
+
+		$("#texto").jqte({
+			fsize : false
+			, center : false
+			//, left  : false
+		//	, right: false
+			, format : false
+			, indent : false
+			, link: false
+			, outdent : false
+			, unlink : false
+			, color : false
+			, rule : false
+			, titletext:[
+					        {title:"Text Format"},
+					        {title:"Font Size"},
+					        {title:"Select Color"},
+					        {title:"Negrito",hotkey:"B"},
+					        {title:"Itálico",hotkey:"I"},
+					        {title:"Sublinhado",hotkey:"U"},
+					        {title:"Lista ordenada",hotkey:"."},
+					        {title:"Lista desordenada",hotkey:","},
+					        {title:"Subscrito",hotkey:"down arrow"},
+					        {title:"Sobrescrito",hotkey:"up arrow"},
+					        {title:"Outdent",hotkey:"left arrow"},
+					        {title:"Indent",hotkey:"right arrow"},
+					        {title:"Esquerda"},
+					        {title:"Justify Center"},
+					        {title:"Direita"},
+					        {title:"Tachar",hotkey:"K"},
+					        {title:"Add Link",hotkey:"L"},
+					        {title:"Remove Link",hotkey:""},
+					        {title:"Limpar estilo",hotkey:"Delete"},
+					        {title:"Horizontal Rule",hotkey:"H"},
+					        {title:"HTML",hotkey:""}
+					    ]
+		});
+	
+		var newButton = $('.jqte_tool').first().clone();
+		newButton.html("<i class='fa fa-image add_imagem'></i>");
+		$(".jqte_toolbar").append(newButton);
+
+		$(".add_imagem").on('click',function(){
+			$("#imagem-upload").click();
+			return false;
+		});
+
+
+      	$("#imagem-upload").on('change',function(){
+      		var data = new FormData();
+      		data.append('imagem',$(this)[0].files[0]);
+      		
+      		$.ajax({
+      			type : 'POST'
+      			, url : 'uploadImagem'
+      			, data : data
+      			, cache : false
+      			, contentType : false
+      			, processData : false
+      			, success : function(data)
+      			{
+      				//$("#texto").click();
+      				$(".jqte_editor").html( $(".jqte_editor").html() + "<img src='" + "../../upload/noticia-body/" + data + "' />" );
+      				/*
+      				data = ;
+      				editor.focus();
+      				editor.composer.commands.exec("insertImage", { src: data, alt: "", 'class': "noticia-img-left" });	
+      				*/
+      			}
+      		})
+
+      		return false;
+      	});
+
+	})
+</script>
+
+<style>
+#texto{ max-width: 100%; height: 200px; border: 1px solid #ccc; padding: 5px; }
+</style>
+
+<form method='post' enctype="multipart/form-data">
+	<p>
+		<span class="width-1 height-1">507x370</span>
+		<input type='file' name='imagem-1' id='imagem-1' />
+	</p>
+	<p>
+		<span class="width-2 height-1">1480x578</span>
+		<input type='file' name='imagem-2' id='imagem-2' />
+	</p>
+	<p>
+		Destaque home: &nbsp;&nbsp;
+		<label><input type="radio" name="destaque" value="S"/> Sim</label>
+		<label><input type="radio" name="destaque" checked value="N"/> N?o</label>
+	</p>
+	<p>
+		<input type="text" name="titulo" id="titulo" placeholder="Titulo" maxlength="200" />
+	</p>
+	<p>
+		<input type='file' style="display:none" id="imagem-upload" />
+		<textarea name="descricao" max-length='300' rows="5" placeholder="Breve Descri??o"></textarea>
+	</p>
+	<p>
+		<textarea name="texto" id="texto" max-length='40000' rows="30" style="height: 400px" spellcheck="false" wrap="off" placeholder="Texto" ></textarea>
+	</p>
+	<input type="submit" style='display:none;' />
+</form>

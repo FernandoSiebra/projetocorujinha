@@ -1,0 +1,79 @@
+*{ margin: 0; padding: 0; font-family: 'Noto Sans', sans-serif; }
+body { padding: 0 20px; padding-bottom: 100px; }
+.middle { width: 100%; max-width: 900px; margin: 0 auto; }
+/* HEADER */
+header { padding-top: 20px; }
+header h1{ text-align: center; font-size: 20px; }
+header h1 a { display: inline-block; }
+header h1 span { display: block; padding-top: 20px; }
+.acompanhe { color: #3366FF; text-align: right; }
+.acompanhe .fa-facebook-square{ color: #3b5998; margin-left: 10px; }
+.acompanhe .fa-instagram{ color: #e95950;}
+.acompanhe i{ font-size: 30px; margin: 0 2px; }
+.endereco { text-align: right; }
+.endereco img { margin-left: 5px; padding: 0; }
+header nav a { background-color: #0153a5; color: #fff; line-height: 40px; margin: 0 3px; font-size: 14px; padding: 0 20px; display: inline-block; }
+header nav a:hover, header nav a:active, header nav a:focus
+{ color: #fff; text-decoration: none; background-color: #013a73; }
+
+header nav { text-align: right; margin-top: 50px; }
+.btn-contribuir { background-color: #1a7740; }
+.btn-contribuir:hover, .btn-contribuir:active, .btn-contribuir:focus
+{
+	background-color: #156134;
+}
+.header-right {  padding-top: 30px; }
+
+/* home foto */
+.home-foto{ margin-top: 20px; margin-bottom: 50px; }
+.home-foto img{ width: 100%; }
+
+/* SECTION */
+.site-section{ padding-top: 20px; }
+.site-section h1 { font-size: 26px; border-bottom: 2px solid #0153a5; display: inline-block; padding-bottom: 10px; margin-bottom: 30px; }
+.site-section p { text-align: justify; }
+.site-section + .site-section { margin-top: 80px; }
+
+/* FOOTER */
+footer { margin-top: 150px; }
+footer .middle { padding-top: 20px; border-top: 2px solid #0153a5; }
+footer .endereco { text-align: left; width: 49%; display: inline-block; }
+footer .acompanhe { width: 50%; display: inline-block; float: right; }
+.acompanhe-mobile { display: none; }
+
+
+/* FISCALIZE */
+.table-fiscalize { width: 100%; margin-top: 20px; }
+.table-fiscalize thead td { font-weight: bold; color: #444;  }
+.table-fiscalize td{ border: 1px solid #ccc; line-height: 20px;  font-size: 14px; padding: 0 5px;  }
+.table-fiscalize .valor-negativo { color: red; }
+.filter + .filter{ margin-left: 20px; }
+.prestacao-contas { display: table; width: 100%;  }
+.prestacao-contas a{ float: right }
+
+@media only screen and (max-width: 800px) {
+	body{ padding: 0 10px; }
+    header nav { text-align: center; margin-top: 10px; }
+    header nav a { font-size: 12px; line-height: 35px; padding: 0 10px; margin: 0; margin-bottom: 5px; }
+    .acompanhe{ display: none;  }
+    .endereco { text-align: center; }
+    .endereco span { display: none; }
+    .header-right { padding-top: 0px; }
+    .site-section{ padding: 0 15px; }
+    .site-section h1 { margin-top: 20px; }
+	.site-section + .site-section { margin-top: 60px; }
+	.home-foto{ margin-bottom: 20px; }
+	footer .endereco { width: 100%; text-align: center; }
+	footer .acompanhe { width: 100%; text-align: center; }
+	.acompanhe-mobile { display: block; padding-top: 10px; }
+	.filter { display: block; }
+	.filter + .filter{ margin-left: 0 !important; margin-top: 10px; }
+	.table-fiscalize td { font-size: 8px; line-height: 12px; padding: 0 4px; }
+	.table-fiscalize-mobile { width: 100%; overflow: scroll; }
+
+}
+
+@media only screen and (max-width: 350px) {
+	header nav a { display: block; }
+}
+

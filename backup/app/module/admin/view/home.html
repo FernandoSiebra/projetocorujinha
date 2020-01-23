@@ -1,0 +1,398 @@
+<style type="text/css">
+	.media{ display: none; }
+	.form-home img{ max-height:100px; max-width:60px;  }
+	.form-home select{margin-bottom: 10px;}
+</style>
+
+<script type="text/javascript">
+	$(function(){
+		$(".form-home select").on('change',function(){
+			$(this).parent().find(".media").hide();
+			$(this).next().hide();
+			if ( $(this).val() === "imagem" )
+			{
+				$(this).parent().find(".media").show();
+				$(this).next().show();
+			}
+		});
+
+		$(".form-home select[name='1']").val('@selected_um');
+		$(".form-home select[name='2']").val('@selected_dois');
+		$(".form-home select[name='3']").val('@selected_tres');
+		$(".form-home select[name='4']").val('@selected_quatro');
+		$(".form-home select[name='5']").val('@selected_cinco');
+		$(".form-home select[name='6']").val('@selected_seis');
+		$(".form-home select[name='7']").val('@selected_sete');
+		$(".form-home select[name='8']").val('@selected_oito');
+		$(".form-home select[name='9']").val('@selected_nove');
+		$(".form-home select[name='10']").val('@selected_dez');
+		$(".form-home select[name='11']").val('@selected_onze');
+		$(".form-home select[name='12']").val('@selected_doze');
+		$(".form-home select[name='13']").val('@selected_treze');
+		$(".form-home select[name='14']").val('@selected_quatorze');
+		$(".form-home select[name='15']").val('@selected_quinze');
+		
+		$.each( $('.form-home select'), function(i,el){
+			if( $(el).val() === "imagem" )
+			{
+				$(this).parent().find(".media").show();
+				$(this).next().show();
+			}
+		});
+
+		$(".media label").each(function(i,el){
+			if( $(el).html() == "" )
+			{
+				$(el).html( $(el).data('org') );
+			}
+		})
+
+	});
+</script>
+<p style='text-align:center;'>
+	<img src="../app/assets/img/home-mapa.jpg" alt="" />
+</p>
+
+<form method="post" class='form-home' action="home/update" enctype="multipart/form-data">
+
+	<header>
+		<p style="text-align:right;">
+		<button type="submit" class='btn btn-primary'>Confirmar</button>
+		<p>
+	</header>
+
+
+
+
+	<div class="col-md-6">
+
+		 <div class="form-group">
+	    	<label for="1" class="control-label">Posição 1</label>
+	    	<select name="1" class="form-control">
+				<option value="">Vazio</option>
+				<option value="imagem">Imagem</option>
+				<optgroup label="Projeto">
+					@foreach(projetos)
+					<option value="@id">@nome</option>
+					@end
+				</optgroup>
+			</select>
+			<div class="media">
+			  <div class="media-left">
+			    <label for="imagem-1" data-org="255x184">@img_um</label>
+			  </div>
+			  <div class="media-body">
+			    <p class="media-heading">Imagem 1 (255x184)</p>
+				<input type='file' name="imagem-1">
+			  </div>
+			</div>
+	    </div>
+
+	    <div class="form-group">
+	    	<label for="2" class="control-label">Posição 2</label>
+	    	<select name="2" class="form-control">
+				<option value="">Vazio</option>
+				<option value="imagem">Imagem</option>
+				<optgroup label="Projeto">
+					@foreach(projetos)
+					<option value="@id">@nome</option>
+					@end
+				</optgroup>
+			</select>
+			
+			<div class="media">
+			  <div class="media-left">
+			    <label for="imagem-2" data-org="507x370">@img_dois</label>
+			  </div>
+			  <div class="media-body">
+			    <p class="media-heading">Imagem 2 (507x370)</p>
+				<input type='file' name="imagem-2">
+			  </div>
+			</div>
+	    </div>
+
+	    <div class="form-group">
+	    	<label for="3" class="control-label">Posição 3</label>
+	    	<select name="3" class="form-control">
+				<option value="">Vazio</option>
+				<option value="imagem">Imagem</option>
+				<optgroup label="Projeto">
+					@foreach(projetos)
+					<option value="@id">@nome</option>
+					@end
+				</optgroup>
+			</select>
+			
+			<div class="media">
+			  <div class="media-left">
+			    <label for="imagem-3" data-org="255x184">@img_tres</label>
+			  </div>
+			  <div class="media-body">
+			    <p class="media-heading">Imagem 3 (255x184)</p>
+				<input type='file' name="imagem-3">
+			  </div>
+			</div>
+	    </div>
+
+		<div class="form-group">
+	    	<label for="4" class="control-label">Posição 4</label>
+	    	<select name="4" class="form-control">
+				<option value="">Vazio</option>
+				<option value="imagem">Imagem</option>
+				<optgroup label="Projeto">
+					@foreach(projetos)
+					<option value="@id">@nome</option>
+					@end
+				</optgroup>
+			</select>
+			
+			<div class="media">
+			  <div class="media-left">
+			    <label for="imagem-4" data-org="255x184">@img_quatro</label>
+			  </div>
+			  <div class="media-body">
+			    <p class="media-heading">Imagem 4 (255x184)</p>
+				<input type='file' name="imagem-4">
+			  </div>
+			</div>
+	    </div>
+
+		<div class="form-group">
+	    	<label for="5" class="control-label">Posição 5</label>
+	    	<select name="5" class="form-control">
+				<option value="">Vazio</option>
+				<option value="imagem">Imagem</option>
+				<optgroup label="Projeto">
+					@foreach(projetos)
+					<option value="@id">@nome</option>
+					@end
+				</optgroup>
+			</select>
+			
+			<div class="media">
+			  <div class="media-left">
+			    <label for="imagem-5" data-org="255x184">@img_cinco</label>
+			  </div>
+			  <div class="media-body">
+			    <p class="media-heading">Imagem 5 (255x184)</p>
+				<input type='file' name="imagem-5">
+			  </div>
+			</div>
+	    </div>
+		<div class="form-group">
+	    	<label for="6" class="control-label">Posição 6</label>
+	    	<select name="6" class="form-control">
+				<option value="">Vazio</option>
+				<option value="imagem">Imagem</option>
+				<optgroup label="Projeto">
+					@foreach(projetos)
+					<option value="@id">@nome</option>
+					@end
+				</optgroup>
+			</select>
+			
+			<div class="media">
+			  <div class="media-left">
+			    <label for="imagem-6" data-org="255x184">@img_seis</label>
+			  </div>
+			  <div class="media-body">
+			    <p class="media-heading">Imagem 6 (255x184)</p>
+				<input type='file' name="imagem-6">
+			  </div>
+			</div>
+	    </div>
+	    <input type="hidden" name="7" value="" />
+	    <div class="form-group">
+	    	<label for="8" class="control-label">Posição 8</label>
+	    	<select name="8" class="form-control">
+				<option value="">Vazio</option>
+				<option value="imagem">Imagem</option>
+				<optgroup label="Projeto">
+					@foreach(projetos)
+					<option value="@id">@nome</option>
+					@end
+				</optgroup>
+			</select>
+			
+			<div class="media">
+			  <div class="media-left">
+			    <label for="imagem-8" data-org="255x184">@img_oito</label>
+			  </div>
+			  <div class="media-body">
+			    <p class="media-heading">Imagem 8 (255x184)</p>
+				<input type='file' name="imagem-8">
+			  </div>
+			</div>
+	    </div>
+		
+
+		
+	</div>
+	<div class="col-md-6">
+
+	
+		<div class="form-group">
+	    	<label for="9" class="control-label">Posição 9</label>
+	    	<select name="9" class="form-control">
+				<option value="">Vazio</option>
+				<option value="imagem">Imagem</option>
+				<optgroup label="Projeto">
+					@foreach(projetos)
+					<option value="@id">@nome</option>
+					@end
+				</optgroup>
+			</select>
+			
+			<div class="media">
+			  <div class="media-left">
+			    <label for="imagem-9" data-org="255x184">@img_nove</label>
+			  </div>
+			  <div class="media-body">
+			    <p class="media-heading">Imagem 9 (255x184)</p>
+				<input type='file' name="imagem-9">
+			  </div>
+			</div>
+	    </div>
+
+
+		<div class="form-group">
+	    	<label for="10" class="control-label">Posição 10</label>
+	    	<select name="10" class="form-control">
+				<option value="">Vazio</option>
+				<option value="imagem">Imagem</option>
+				<optgroup label="Projeto">
+					@foreach(projetos)
+					<option value="@id">@nome</option>
+					@end
+				</optgroup>
+			</select>
+			
+			<div class="media">
+			  <div class="media-left">
+			    <label for="imagem-10" data-org="255x184">@img_dez</label>
+			  </div>
+			  <div class="media-body">
+			    <p class="media-heading">Imagem 10 (255x184)</p>
+				<input type='file' name="imagem-10">
+			  </div>
+			</div>
+	    </div>
+
+		<div class="form-group">
+	    	<label for="11" class="control-label">Posição 11</label>
+	    	<select name="11" class="form-control">
+				<option value="">Vazio</option>
+				<option value="imagem">Imagem</option>
+				<optgroup label="Projeto">
+					@foreach(projetos)
+					<option value="@id">@nome</option>
+					@end
+				</optgroup>
+			</select>
+			
+			<div class="media">
+			  <div class="media-left">
+			    <label for="imagem-11" data-org="255x370">@img_onze</label>
+			  </div>
+			  <div class="media-body">
+			    <p class="media-heading">Imagem 11 (255x370)</p>
+				<input type='file' name="imagem-11">
+			  </div>
+			</div>
+	    </div>
+
+		<div class="form-group">
+	    	<label for="12" class="control-label">Posição 12</label>
+	    	<select name="12" class="form-control">
+				<option value="">Vazio</option>
+				<option value="imagem">Imagem</option>
+				<optgroup label="Projeto">
+					@foreach(projetos)
+					<option value="@id">@nome</option>
+					@end
+				</optgroup>
+			</select>
+			
+			<div class="media">
+			  <div class="media-left">
+			    <label for="imagem-12" data-org="255x370">@img_doze</label>
+			  </div>
+			  <div class="media-body">
+			    <p class="media-heading">Imagem 12 (255x370)</p>
+				<input type='file' name="imagem-12">
+			  </div>
+			</div>
+	    </div>
+
+		<div class="form-group">
+	    	<label for="13" class="control-label">Posição 13</label>
+	    	<select name="13" class="form-control">
+				<option value="">Vazio</option>
+				<option value="imagem">Imagem</option>
+				<optgroup label="Projeto">
+					@foreach(projetos)
+					<option value="@id">@nome</option>
+					@end
+				</optgroup>
+			</select>
+			
+			<div class="media">
+			  <div class="media-left">
+			    <label for="imagem-13" data-org="255x184">@img_treze</label>
+			  </div>
+			  <div class="media-body">
+			    <p class="media-heading">Imagem 13 (255x184)</p>
+				<input type='file' name="imagem-13">
+			  </div>
+			</div>
+	    </div>
+
+		<div class="form-group">
+	    	<label for="14" class="control-label">Posição 14</label>
+	    	<select name="14" class="form-control">
+				<option value="">Vazio</option>
+				<option value="imagem">Imagem</option>
+				<optgroup label="Projeto">
+					@foreach(projetos)
+					<option value="@id">@nome</option>
+					@end
+				</optgroup>
+			</select>
+			
+			<div class="media">
+			  <div class="media-left">
+			    <label for="imagem-14" data-org="255x184">@img_quatorze</label>
+			  </div>
+			  <div class="media-body">
+			    <p class="media-heading">Imagem 14 (255x184)</p>
+				<input type='file' name="imagem-14">
+			  </div>
+			</div>
+	    </div>
+
+	    <div class="form-group">
+	    	<label for="15" class="control-label">Posição 15</label>
+	    	<select name="15" class="form-control">
+				<option value="">Vazio</option>
+				<option value="imagem">Imagem</option>
+				<optgroup label="Projeto">
+					@foreach(projetos)
+					<option value="@id">@nome</option>
+					@end
+				</optgroup>
+			</select>
+			
+			<div class="media">
+			  <div class="media-left">
+			    <label for="imagem-15" data-org="255x370">@img_quinze</label>
+			  </div>
+			  <div class="media-body">
+			    <p class="media-heading">Imagem 15 (255x370)</p>
+				<input type='file' name="imagem-15">
+			  </div>
+			</div>
+	    </div>
+
+	</div>
+
+</form>

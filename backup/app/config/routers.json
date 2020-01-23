@@ -1,0 +1,10 @@
+{
+	"home" :
+	{
+		"controller" : "home"
+		, "action" : "main"
+		, "type" : "get"
+		, "template" : "default"
+		, "view" : "home"
+ 	}
+}

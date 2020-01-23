@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>@title</title>
+	<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700'>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="@asset(css,font-awesome.min.css)">
+	<link rel="stylesheet" type="text/css" href="@asset(css,bootstrap.min.css)">
+	<link rel="stylesheet" type="text/css" media="(min-width: 990px)" href="@asset(css,main.css)">
+	<link rel="stylesheet" type="text/css" media="(max-width: 990px)" href="@asset(css,mobile.css)">
+	<script src="@asset(js,jquery-1.11.3.min.js)"></script>
+	<script src="@asset(js,main.js)"></script>
+	@pageScript
+	
+	<!--[if lt IE 9]>
+	   <script>
+	      document.createElement('header');
+	      document.createElement('nav');
+	      document.createElement('section');
+	      document.createElement('article');
+	      document.createElement('aside');
+	      document.createElement('footer');
+	   </script>
+	<![endif]-->
+</head>
+<body class="page-@router loading">
+
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+	<!--
+	<div class="body-loading">
+		<i class="fa fa-spinner fa-pulse"></i>
+	</div>
+	-->
+	<div class="capa">
+		<img src="@asset(img,capa.jpg)" class="background mobile-false" alt="" width="" height="" />
+		<img src="@asset(img,capa-mobile.jpg)" class="background mobile-true" alt="" width="" height="" />
+	</div>
+
+	<div class="home">
+
+		<h1>
+			<img src="@asset(img,projeto-corujinha.jpg)" alt="" width="185" height="240" />
+		</h1>
+
+		<div class="fb-page mobile-false" data-href="https://www.facebook.com/projetocorujinha" data-width="500" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/projetocorujinha"><a href="https://www.facebook.com/projetocorujinha">Projeto Corujinha</a></blockquote></div></div>
+
+		<div class="fb-page mobile-true" data-href="https://www.facebook.com/projetocorujinha" data-width="300" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/projetocorujinha"><a href="https://www.facebook.com/projetocorujinha">Projeto Corujinha</a></blockquote></div></div>
+
+	</div>
+
+</body>
+</html>

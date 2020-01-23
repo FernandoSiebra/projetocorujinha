@@ -1,0 +1,160 @@
+{
+	"home" :
+	{
+		"controller" : "home"
+		, "action" : "main"
+		, "type" : "get"
+		, "template" : "admin"
+		, "view" : "home"
+ 	}
+ 	,
+ 	"home/update" :
+	{
+		"controller" : "home"
+		, "action" : "update"
+		, "type" : "post"
+ 	}
+ 	,
+ 	"auth" :
+ 	{
+ 		"controller" : "auth"
+ 		, "action" : "main"
+ 		, "type" : "get"
+ 		, "template" : "auth"
+ 		, "view" : "auth"
+ 	}
+ 	,
+ 	"auth/edit" :
+	{
+		"controller" : "auth"
+		, "action" : "edit"
+		, "type" : "get,post"
+		, "template" : "admin"
+		, "view" : "auth-edit"
+ 	}
+ 	,
+ 	"auth/validate" :
+ 	{
+ 		"controller" : "auth"
+ 		, "action" : "validate"
+ 		, "type" : "post"
+ 	}
+ 	,
+ 	"auth/logout" :
+ 	{
+ 		"controller" : "auth"
+ 		, "action" : "logout"
+ 		, "type" : "get"
+ 	}
+ 	,
+ 	"projeto" :
+ 	{
+ 		"controller" : "projeto"
+ 		, "action" : "main"
+ 		, "type" : "get"
+ 		, "template" : "admin"
+ 		, "view" : "projeto"
+ 	}
+ 	,
+ 	"projeto/get/:id" :
+ 	{
+ 		"controller" : "projeto"
+ 		, "action" : "get"
+ 		, "type" : "get"
+ 	}
+ 	,
+ 	"projeto/salvar" :
+ 	{
+ 		"controller" : "projeto"
+ 		, "action" : "salvar"
+ 		, "type" : "post"
+ 	}
+ 	,
+ 	"projeto/delete/:id" :
+ 	{
+ 		"controller" : "projeto"
+ 		, "action" : "delete"
+ 		, "type" : "get"
+ 	}
+ 	,
+ 	"projeto/imagem/delete/:id/:posicao" :
+ 	{
+ 		"controller" : "projeto"
+ 		, "action" : "delete"
+ 		, "type" : "get"
+ 	}
+ 	,
+ 	"noticia" :
+ 	{
+ 		"controller" : "noticia"
+ 		, "action" : "main"
+ 		, "type" : "get"
+ 		, "template" : "admin"
+ 		, "view" : "noticia"
+ 	}
+ 	,
+ 	"noticia/salvar" :
+ 	{
+ 		"controller" : "noticia"
+ 		, "action" : "salvar"
+ 		, "type" : "post"
+ 	}
+ 	,
+ 	"noticia/get/:id" :
+ 	{
+ 		"controller" : "noticia"
+ 		, "action" : "get"
+ 		, "type" : "get"
+ 	}
+ 	,
+ 	"noticia/edit/:id" :
+ 	{
+ 		"controller" : "noticia"
+ 		, "action" : "edit"
+ 		, "type" : "get,post"
+ 		, "template" : "admin"
+ 		, "view" : "noticia-edit"
+ 	}
+ 	,
+ 	"noticia/delete/:id" :
+ 	{
+ 		"controller" : "noticia"
+ 		, "action" : "delete"
+ 		, "type" : "get"
+ 	}
+	,
+ 	"noticia/imagem/delete/:id/:posicao" :
+ 	{
+ 		"controller" : "noticia"
+ 		, "action" : "delete"
+ 		, "type" : "get"
+ 	}
+ 	,
+ 	"noticia/uploadImagem" :
+ 	{
+ 		"controller" : "noticia"
+ 		, "action" : "uploadImagem"
+ 		, "type" : "get,post"
+ 	}
+ 	,
+ 	"move/:entity/:id/:direction" :
+ 	{
+ 		"controller" : "move"
+ 		, "action" : "move"
+ 		, "type" : "get"
+ 	}
+ 	,
+ 	"noticia/imagens/:id" :
+ 	{
+ 		"controller" : "noticia"
+ 		, "action" : "imagensInternas"
+ 		, "type" : "get"
+ 	}
+ 	, 
+ 	"noticia/imagens/delete/:id" :
+ 	{
+ 		"controller" : "noticia"
+ 		, "action" : "imagemDelete"
+ 		, "type" : "get"
+ 	}
+}

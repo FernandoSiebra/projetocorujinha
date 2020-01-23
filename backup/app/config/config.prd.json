@@ -1,0 +1,19 @@
+{
+	"modules" :
+	{
+		"admin" : "true"
+	}
+	,
+	"database" :
+	{
+		"default" :
+		{
+			"driver" : "mysql"
+			, "host" : "179.188.16.15"
+			, "database" : "proaarquitetos"
+			, "user" : "proaarquitetos"
+			, "pass" : "aCs4nGoNip"
+		}
+	}
+	
+}

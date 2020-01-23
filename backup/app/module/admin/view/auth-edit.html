@@ -1,0 +1,61 @@
+<h4>
+	Editar Dados
+</h4>
+
+<script type="text/javascript">
+	$(function(){
+		$(".form-auth").on("submit",function(){
+			$(".form-auth .has-error").removeClass('has-error');
+			if( $("#pass").val() === "" )
+			{
+				$("#pass").parent().addClass("has-error");
+			}
+
+			if( $("#repass").val() === "" )
+			{
+				$("#repass").parent().addClass("has-error");
+			}
+
+			if( !$("#pass").hasClass("has-error") && $("#pass").val().length < 4 )
+			{
+				alert("Senha deve ter pelo menos 4 caracteres");
+				$("#pass").parent().addClass("has-error");
+			}
+
+			if( !$("#pass").hasClass("has-error") && $("#pass").val() !== $("#repass").val() )
+			{
+				alert("Senha e repetição devem ser iguais");
+				$("#repass").parent().addClass("has-error");
+			}
+
+			if( $(".form-auth .has-error").length != 0 )
+			{
+				return false;	
+			}
+
+			return confirm("Deseja realmente alterar sua senha?");
+
+		})
+	})
+</script>
+
+<form class="form-auth" method='post'>
+
+
+	 <div class="form-group">
+		<label for="login" class="control-label">Login</label>
+		<input type="text" name="login" id="login" class="form-control" readonly placeholder="Login" value="@login" maxlength="20" />
+	</div>
+	 <div class="form-group">
+		<label for="pass" class="control-label">Senha</label>
+		<input type="password" name="pass" class="form-control" id="pass" placeholder="Senha" value="" maxlength="20" />
+	</div>
+	 <div class="form-group">
+		<label for="repass" class="control-label">Senha</label>
+		<input type="password" id="repass" class="form-control" placeholder="Repita Senha" value="" maxlength="20" />
+	</div>
+
+	<p style="text-align: right;">
+		<button type="submit" class='btn btn-primary'>Confirmar</button>	
+	</p>
+</form>
